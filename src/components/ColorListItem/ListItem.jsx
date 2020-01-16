@@ -1,15 +1,30 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const ListItem = ({ colorName, colorCode, currentColor, stateColorChange, preStateColorChange }) => (
+import { setValue, setRGBValue } from '../../actions'
+
+const ListItem = ({ colorCode, colorName, value, setValue, setRGBValue }) => (
   <div
-    className={currentColor === colorCode ? 'color-list-item current' : 'color-list-item'}
+    className={value === colorCode ? 'color-list-item current' : 'color-list-item'}
     onClick={() => {
-      stateColorChange(colorCode)
-      preStateColorChange(colorCode)
+      setValue(colorCode)
+      setRGBValue(colorCode)
     }}>
     <p className='color-list-paragraph'>{colorName}</p>
     <div className='color-preview-box' style={{ backgroundColor: colorCode }} />
   </div>
 )
 
-export default ListItem
+const mapStateToProps = ({ setValues }) => {
+  return {
+    value: setValues.value,
+    rgbValue: setValues.rgbValue,
+  }
+}
+
+const mapDispatchToProps = {
+  setValue,
+  setRGBValue,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem)

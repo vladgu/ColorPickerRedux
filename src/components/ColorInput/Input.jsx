@@ -1,15 +1,29 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { setValue, setRGBValue } from '../../actions'
 
-const Input = ({ color, stateColorChange, preStateColorChange }) => (
+const Input = ({ value, setValue, setRGBValue }) => (
   <input
     type='text'
     className='color-input'
-    value={color}
+    value={value}
     onChange={e => {
-      stateColorChange(e.target.value)
-      preStateColorChange(e.target.value)
+      setValue(e.target.value)
+      setRGBValue(e.target.value)
     }}
   />
 )
 
-export default Input
+const mapStateToProps = ({ setValues }) => {
+  return {
+    value: setValues.value,
+    rgbValue: setValues.rgbValue,
+  }
+}
+
+const mapDispatchToProps = {
+  setValue,
+  setRGBValue,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input)

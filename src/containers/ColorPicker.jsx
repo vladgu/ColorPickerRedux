@@ -1,4 +1,5 @@
-import React, { useState, useEffect, memo } from 'react'
+import React, { useEffect, memo } from 'react'
+import { connect } from 'react-redux'
 
 import colors from '../configs/colorList'
 import Input from '../components/ColorInput/Input'
@@ -6,59 +7,50 @@ import PreviewBox from '../components/ColorPreviewBox/PreviewBox'
 import ArrowIcon from '../components/DropdownArrowIcon/ArrowIcon'
 import ListItem from '../components/ColorListItem/ListItem'
 import RangePicker from '../components/ColorRangePicker/RangePicker'
+import { setValue, setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../actions'
 
-const ColorPicker = () => {
-  const [value, onChange] = useState(colors[0].code)
-  const [rgbValue, onChangeRGB] = useState(colors[0].code)
-  const [rgbDropdownOpened, onRGBDropdownOpen] = useState(false)
-  const [dropdownOpened, onDropdownOpen] = useState(false)
-
+const ColorPicker = ({
+  value,
+  rgbValue,
+  rgbDropdownOpened,
+  dropdownOpened,
+  setValue,
+  setRGBValue,
+  setDropdownOpened,
+  setRGBDropdownOpened,
+}) => {
   useEffect(() => {
-    // console.log(value, rgbValue)
-  })
+    setValue(colors[0].code)
+    setRGBValue(colors[0].code)
+    setDropdownOpened(false)
+    setRGBDropdownOpened(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div
       className='wrapper'
       onClick={() => {
-        onRGBDropdownOpen(false)
-        onDropdownOpen(false)
+        setDropdownOpened(false)
+        setRGBDropdownOpened(false)
+        // if (value !== rgbValue) setRGBValue(value)
       }}>
       <div className='color-picker'>
-        <Input color={value} stateColorChange={onChange} preStateColorChange={onChangeRGB} />
-
-        <PreviewBox
-          color={value !== rgbValue ? rgbValue : value}
-          rgbDropdownOpenedProp={rgbDropdownOpened}
-          onRGBDropdownOpenProp={onRGBDropdownOpen}
-          onDropdownOpenProp={onDropdownOpen}
-        />
-
+        <Input />
+        <PreviewBox />
         {rgbDropdownOpened ? (
           <div className='arrow-dropdown rgb'>
             <div className='arrow-up rgb' />
-            <RangePicker currentColor={value} stateColorChange={onChange} preStateColorChange={onChangeRGB} />
+            <RangePicker />
           </div>
         ) : null}
 
-        <ArrowIcon
-          dropdownOpenedProp={dropdownOpened}
-          onRGBDropdownOpenProp={onRGBDropdownOpen}
-          onDropdownOpenProp={onDropdownOpen}
-        />
-
+        <ArrowIcon />
         {dropdownOpened ? (
           <div className='arrow-dropdown'>
             <div className='arrow-up' />
             {colors.map(({ name, code }, index) => (
-              <ListItem
-                key={String(index)}
-                currentColor={value}
-                colorName={name}
-                colorCode={code}
-                stateColorChange={onChange}
-                preStateColorChange={onChangeRGB}
-              />
+              <ListItem key={String(index)} colorName={name} colorCode={code} />
             ))}
           </div>
         ) : null}
@@ -67,4 +59,20 @@ const ColorPicker = () => {
   )
 }
 
-export default memo(ColorPicker)
+const mapStateToProps = ({ setValues, dropdowns }) => {
+  return {
+    value: setValues.value,
+    rgbValue: setValues.rgbValue,
+    rgbDropdownOpened: dropdowns.rgbDropdownOpened,
+    dropdownOpened: dropdowns.dropdownOpened,
+  }
+}
+
+const mapDispatchToProps = {
+  setValue,
+  setRGBValue,
+  setDropdownOpened,
+  setRGBDropdownOpened,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(memo(ColorPicker))

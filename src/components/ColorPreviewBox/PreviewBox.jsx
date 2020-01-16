@@ -1,17 +1,35 @@
-import React from 'react'
+import React, { memo } from 'react'
+import { connect } from 'react-redux'
 
-const PreviewBox = ({ color, rgbDropdownOpenedProp, onRGBDropdownOpenProp, onDropdownOpenProp }) => (
+import { setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../../actions'
+
+const PreviewBox = ({ value, rgbValue, rgbDropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => (
   <div className='box'>
     <div
-      className={rgbDropdownOpenedProp ? 'color-preview-box opened' : 'color-preview-box'}
-      style={{ backgroundColor: color }}
+      className={rgbDropdownOpened ? 'color-preview-box opened' : 'color-preview-box'}
+      style={{ backgroundColor: value !== rgbValue ? rgbValue : value }}
       onClick={e => {
         e.stopPropagation()
-        onRGBDropdownOpenProp(!rgbDropdownOpenedProp)
-        onDropdownOpenProp(false)
+        setRGBDropdownOpened(!rgbDropdownOpened)
+        setDropdownOpened(false)
       }}
     />
   </div>
 )
 
-export default PreviewBox
+const mapStateToProps = ({ setValues, dropdowns }) => {
+  return {
+    value: setValues.value,
+    rgbValue: setValues.rgbValue,
+    rgbDropdownOpened: dropdowns.rgbDropdownOpened,
+    dropdownOpened: dropdowns.dropdownOpened,
+  }
+}
+
+const mapDispatchToProps = {
+  setRGBValue,
+  setDropdownOpened,
+  setRGBDropdownOpened,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(memo(PreviewBox))

@@ -1,16 +1,32 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const ArrowIcon = ({ dropdownOpenedProp, onDropdownOpenProp, onRGBDropdownOpenProp }) => (
+import { setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../../actions'
+
+const ArrowIcon = ({ dropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => (
   <div className='box'>
     <i
-      className={dropdownOpenedProp ? 'arrow-down opened' : 'arrow-down'}
+      className={dropdownOpened ? 'arrow-down opened' : 'arrow-down'}
       onClick={e => {
         e.stopPropagation()
-        onDropdownOpenProp(!dropdownOpenedProp)
-        onRGBDropdownOpenProp(false)
+        setDropdownOpened(!dropdownOpened)
+        setRGBDropdownOpened(false)
       }}
     />
   </div>
 )
 
-export default ArrowIcon
+const mapStateToProps = ({ dropdowns }) => {
+  return {
+    rgbDropdownOpened: dropdowns.rgbDropdownOpened,
+    dropdownOpened: dropdowns.dropdownOpened,
+  }
+}
+
+const mapDispatchToProps = {
+  setRGBValue,
+  setDropdownOpened,
+  setRGBDropdownOpened,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArrowIcon)
