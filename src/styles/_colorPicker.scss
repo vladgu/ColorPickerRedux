@@ -1,0 +1,43 @@
+.color-picker {
+  height: 40px;
+  width: 260px;
+  margin-bottom: 150px;
+  border-bottom: 2px solid $base-black-color;
+  display: flex;
+  position: relative;
+
+  .box {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arrow-dropdown {
+    position: absolute;
+    width: 160px;
+    top: 60px;
+    right: 0;
+    background-color: $base-grey-color-3;
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0 10px;
+
+    &.rgb {
+      width: 240px;
+    }
+    .arrow-up {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $base-grey-color-3;
+      &.rgb {
+        right: 58px;
+      }
+    }
+  }
+}

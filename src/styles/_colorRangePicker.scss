@@ -1,0 +1,73 @@
+.color-range-picker-wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .color-range-picker-paragraph {
+    margin-right: 10px;
+  }
+
+  .color-range-picker {
+    background-color: $base-grey-color-3;
+  }
+
+  .color-range-picker-rgb-paragraph {
+    text-align: right;
+    width: 40px;
+  }
+}
+.buttons-wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .cancel-button {
+    cursor: pointer;
+    padding: 5px 20px;
+    background-color: $base-grey-color-3;
+    border: 1px solid $base-rose-color;
+    border-radius: 5px;
+    color: $base-rose-color;
+    transition: 0.2s all;
+    &:hover {
+      transition: 0.2s all;
+      background-color: $base-grey-color-3;
+      border: 1px solid $base-darkrose-color;
+      color: $base-darkrose-color;
+    }
+    &:active {
+      transition: 0.2s all;
+      background-color: $base-darkrose-color;
+      border: 1px solid $base-darkrose-color;
+      color: $base-grey-color-3;
+    }
+  }
+
+  .ok-button {
+    cursor: pointer;
+    padding: 5px 20px;
+
+    background-color: $base-grey-color-3;
+    border: 1px solid $base-green-color;
+    border-radius: 5px;
+    color: $base-green-color;
+    transition: 0.2s all;
+    &:hover {
+      transition: 0.2s all;
+      background-color: $base-grey-color-3;
+      border: 1px solid $base-darkgreen-color;
+      color: $base-darkgreen-color;
+    }
+    &:active {
+      transition: 0.2s all;
+      background-color: $base-darkgreen-color;
+      border: 1px solid $base-darkgreen-color;
+      color: $base-grey-color-3;
+    }
+  }
+
+  .cancel-button {
+    margin-right: 10px;
+  }
+}

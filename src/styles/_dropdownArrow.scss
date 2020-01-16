@@ -1,0 +1,18 @@
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid $base-black-color;
+  cursor: pointer;
+  transition: 0.2s all;
+  opacity: 0.7;
+  &:hover {
+    transition: 0.2s all;
+    opacity: 1;
+  }
+  &.opened {
+    transition: 0.2s all;
+    transform: rotate(180deg);
+  }
+}

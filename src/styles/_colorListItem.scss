@@ -1,0 +1,22 @@
+.color-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 10px 20px;
+  transition: 0.2s all;
+  margin: 0 -10px;
+  border-radius: 10px;
+  &:hover {
+    transition: 0.2s all;
+    background-color: $base-grey-color-2;
+    cursor: pointer;
+  }
+  &.current {
+    background-color: $base-rose-color;
+  }
+
+  .color-list-paragraph {
+    text-transform: uppercase;
+  }
+}

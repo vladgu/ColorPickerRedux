@@ -1,0 +1,103 @@
+input[type='range'] {
+  height: 25px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type='range']:focus {
+  outline: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px $base-black-color;
+  border-radius: 10px;
+  border: 0px solid $base-black-color;
+}
+//
+#R::-webkit-slider-runnable-track {
+  background: linear-gradient(90deg, $base-black-color 0%, $base-darkrose-color 100%);
+}
+
+#G::-webkit-slider-runnable-track {
+  background: linear-gradient(90deg, $base-black-color 0%, $base-green-color 100%);
+}
+
+#B::-webkit-slider-runnable-track {
+  background: linear-gradient(90deg, $base-black-color 0%, $base-blue-color 100%);
+}
+//
+
+input[type='range']::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px $base-black-color;
+  border: 1px solid $base-grey-color-2;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: $base-grey-color-2;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background: $base-grey-color-1;
+}
+input[type='range']::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px $base-black-color;
+  background: $base-grey-color-1;
+  border-radius: 1px;
+  border: 0px solid $base-black-color;
+}
+input[type='range']::-moz-range-thumb {
+  box-shadow: 0px 0px 0px $base-black-color;
+  border: 1px solid $base-grey-color-1;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: $base-grey-color-2;
+  cursor: pointer;
+}
+input[type='range']::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type='range']::-ms-fill-lower {
+  background: $base-grey-color-1;
+  border: 0px solid $base-black-color;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px $base-black-color;
+}
+input[type='range']::-ms-fill-upper {
+  background: $base-grey-color-1;
+  border: 0px solid $base-black-color;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px $base-black-color;
+}
+input[type='range']::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px $base-black-color;
+  border: 1px solid $base-grey-color-1;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: $base-grey-color-2;
+  cursor: pointer;
+}
+input[type='range']:focus::-ms-fill-lower {
+  background: $base-grey-color-1;
+}
+input[type='range']:focus::-ms-fill-upper {
+  background: $base-grey-color-1;
+}
