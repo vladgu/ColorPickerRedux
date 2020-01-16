@@ -18,7 +18,6 @@ const ListItem = ({ colorCode, colorName, value, setValue, setRGBValue }) => (
 const mapStateToProps = ({ setValues }) => {
   return {
     value: setValues.value,
-    rgbValue: setValues.rgbValue,
   }
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import RangePickerItem from './RangePickerItem'
-import { setValue, setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../../actions'
+import { setValue, setRGBValue } from '../../actions'
 
 const RangePicker = ({ value, setValue, setRGBValue }) => {
   const r = parseInt(value.replace('#', '').substring(0, 2), 16)
@@ -56,15 +56,12 @@ const RangePicker = ({ value, setValue, setRGBValue }) => {
 const mapStateToProps = ({ setValues }) => {
   return {
     value: setValues.value,
-    rgbValue: setValues.rgbValue,
   }
 }
 
 const mapDispatchToProps = {
   setValue,
   setRGBValue,
-  setDropdownOpened,
-  setRGBDropdownOpened,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RangePicker)

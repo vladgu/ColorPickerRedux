@@ -1,13 +1,13 @@
 import React, { memo } from 'react'
 import { connect } from 'react-redux'
 
-import { setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../../actions'
+import { setDropdownOpened, setRGBDropdownOpened } from '../../actions'
 
 const PreviewBox = ({ value, rgbValue, rgbDropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => (
   <div className='box'>
     <div
       className={rgbDropdownOpened ? 'color-preview-box opened' : 'color-preview-box'}
-      style={{ backgroundColor: value !== rgbValue ? rgbValue : value }}
+      style={{ backgroundColor: value !== rgbValue && rgbDropdownOpened ? rgbValue : value }}
       onClick={e => {
         e.stopPropagation()
         setRGBDropdownOpened(!rgbDropdownOpened)
@@ -27,7 +27,6 @@ const mapStateToProps = ({ setValues, dropdowns }) => {
 }
 
 const mapDispatchToProps = {
-  setRGBValue,
   setDropdownOpened,
   setRGBDropdownOpened,
 }

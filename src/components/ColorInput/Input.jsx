@@ -17,7 +17,6 @@ const Input = ({ value, setValue, setRGBValue }) => (
 const mapStateToProps = ({ setValues }) => {
   return {
     value: setValues.value,
-    rgbValue: setValues.rgbValue,
   }
 }
 

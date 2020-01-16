@@ -10,8 +10,6 @@ import RangePicker from '../components/ColorRangePicker/RangePicker'
 import { setValue, setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../actions'
 
 const ColorPicker = ({
-  value,
-  rgbValue,
   rgbDropdownOpened,
   dropdownOpened,
   setValue,
@@ -33,7 +31,6 @@ const ColorPicker = ({
       onClick={() => {
         setDropdownOpened(false)
         setRGBDropdownOpened(false)
-        // if (value !== rgbValue) setRGBValue(value)
       }}>
       <div className='color-picker'>
         <Input />
@@ -61,8 +58,6 @@ const ColorPicker = ({
 
 const mapStateToProps = ({ setValues, dropdowns }) => {
   return {
-    value: setValues.value,
-    rgbValue: setValues.rgbValue,
     rgbDropdownOpened: dropdowns.rgbDropdownOpened,
     dropdownOpened: dropdowns.dropdownOpened,
   }

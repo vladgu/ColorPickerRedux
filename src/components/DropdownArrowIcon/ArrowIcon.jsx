@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setRGBValue, setDropdownOpened, setRGBDropdownOpened } from '../../actions'
+import { setDropdownOpened, setRGBDropdownOpened } from '../../actions'
 
 const ArrowIcon = ({ dropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => (
   <div className='box'>
@@ -18,13 +18,11 @@ const ArrowIcon = ({ dropdownOpened, setDropdownOpened, setRGBDropdownOpened }) 
 
 const mapStateToProps = ({ dropdowns }) => {
   return {
-    rgbDropdownOpened: dropdowns.rgbDropdownOpened,
     dropdownOpened: dropdowns.dropdownOpened,
   }
 }
 
 const mapDispatchToProps = {
-  setRGBValue,
   setDropdownOpened,
   setRGBDropdownOpened,
 }
