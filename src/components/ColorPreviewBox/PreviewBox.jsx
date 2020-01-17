@@ -3,19 +3,23 @@ import { connect } from 'react-redux'
 
 import { setDropdownOpened, setRGBDropdownOpened } from '../../actions'
 
-const PreviewBox = ({ value, rgbValue, rgbDropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => (
-  <div className='box'>
-    <div
-      className={rgbDropdownOpened ? 'color-preview-box opened' : 'color-preview-box'}
-      style={{ backgroundColor: value !== rgbValue && rgbDropdownOpened ? rgbValue : value }}
-      onClick={e => {
-        e.stopPropagation()
-        setRGBDropdownOpened(!rgbDropdownOpened)
-        setDropdownOpened(false)
-      }}
-    />
-  </div>
-)
+const PreviewBox = ({ value, rgbValue, rgbDropdownOpened, setDropdownOpened, setRGBDropdownOpened }) => {
+  const onClickHandler = e => {
+    e.stopPropagation()
+    setRGBDropdownOpened(!rgbDropdownOpened)
+    setDropdownOpened(false)
+  }
+
+  return (
+    <div className='box'>
+      <div
+        className={ rgbDropdownOpened ? 'color-preview-box opened' : 'color-preview-box' }
+        style={ { backgroundColor: value !== rgbValue && rgbDropdownOpened ? rgbValue : value } }
+        onClick={ e => onClickHandler(e) }
+      />
+    </div>
+  )
+}
 
 const mapStateToProps = ({ setValues, dropdowns }) => {
   return {

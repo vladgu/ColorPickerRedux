@@ -23,29 +23,29 @@ const RangePicker = ({ value, setValue, setRGBValue }) => {
     setRGBValue(rgbToHex(`rgb(${red},${green},${blue})`))
   })
 
+  const onClickHandlerCancel = () => {
+    setValue(value)
+    setRGBValue(value)
+    setRed(r)
+    setGreen(g)
+    setBlue(b)
+  }
+
+  const onClickHandlerOk = () => {
+    setValue(rgbToHex(`rgb(${red},${green},${blue})`))
+    setRGBValue(rgbToHex(`rgb(${red},${green},${blue})`))
+  }
+
   return (
     <>
-      <RangePickerItem letter={'R'} color={red} setColor={setRed} />
-      <RangePickerItem letter={'G'} color={green} setColor={setGreen} />
-      <RangePickerItem letter={'B'} color={blue} setColor={setBlue} />
+      <RangePickerItem letter={ 'R' } color={ red } setColor={ setRed } />
+      <RangePickerItem letter={ 'G' } color={ green } setColor={ setGreen } />
+      <RangePickerItem letter={ 'B' } color={ blue } setColor={ setBlue } />
       <div className='buttons-wrapper'>
-        <div
-          className='cancel-button'
-          onClick={() => {
-            setValue(value)
-            setRGBValue(value)
-            setRed(r)
-            setGreen(g)
-            setBlue(b)
-          }}>
+        <div className='cancel-button' onClick={ onClickHandlerCancel }>
           Cancel
         </div>
-        <div
-          className='ok-button'
-          onClick={() => {
-            setValue(rgbToHex(`rgb(${red},${green},${blue})`))
-            setRGBValue(rgbToHex(`rgb(${red},${green},${blue})`))
-          }}>
+        <div className='ok-button' onClick={ onClickHandlerOk }>
           Ok
         </div>
       </div>

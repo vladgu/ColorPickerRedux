@@ -25,32 +25,39 @@ const ColorPicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onClickHandlerWrapper = () => {
+    setDropdownOpened(false)
+    setRGBDropdownOpened(false)
+  }
+
   return (
-    <div
-      className='wrapper'
-      onClick={() => {
-        setDropdownOpened(false)
-        setRGBDropdownOpened(false)
-      }}>
+    <div className='wrapper' onClick={ onClickHandlerWrapper }>
       <div className='color-picker'>
         <Input />
         <PreviewBox />
-        {rgbDropdownOpened ? (
-          <div className='arrow-dropdown rgb'>
-            <div className='arrow-up rgb' />
-            <RangePicker />
-          </div>
-        ) : null}
+
+        {
+          rgbDropdownOpened
+            ?
+            <div className='arrow-dropdown rgb'>
+              <div className='arrow-up rgb' />
+              <RangePicker />
+            </div>
+            : null
+        }
 
         <ArrowIcon />
-        {dropdownOpened ? (
-          <div className='arrow-dropdown'>
-            <div className='arrow-up' />
-            {colors.map(({ name, code }, index) => (
-              <ListItem key={String(index)} colorName={name} colorCode={code} />
-            ))}
-          </div>
-        ) : null}
+        {
+          dropdownOpened
+            ?
+            <div className='arrow-dropdown'>
+              <div className='arrow-up' />
+              { colors.map(({ name, code }, index) => (
+                <ListItem key={ String(index) } colorName={ name } colorCode={ code } />
+              )) }
+            </div>
+            : null
+        }
       </div>
     </div>
   )
