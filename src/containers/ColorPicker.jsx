@@ -56,7 +56,7 @@ const ColorPicker = ({
   )
 }
 
-const mapStateToProps = ({ setValues, dropdowns }) => {
+const mapStateToProps = ({ dropdowns }) => {
   return {
     rgbDropdownOpened: dropdowns.rgbDropdownOpened,
     dropdownOpened: dropdowns.dropdownOpened,

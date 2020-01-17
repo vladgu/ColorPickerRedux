@@ -22,7 +22,6 @@ const mapStateToProps = ({ setValues, dropdowns }) => {
     value: setValues.value,
     rgbValue: setValues.rgbValue,
     rgbDropdownOpened: dropdowns.rgbDropdownOpened,
-    dropdownOpened: dropdowns.dropdownOpened,
   }
 }
 
